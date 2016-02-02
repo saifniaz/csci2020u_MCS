@@ -1,12 +1,19 @@
 apply plugin: 'java'
 
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
 repositories {
     mavenCentral()
  }
 
  dependencies {
-   compile group: 'commons-validator', name: 'commons-validator', version: '1.4.1'
-   compile files("C:/Dev/jdk1.8.0_51/lib/tools.jar")
+   compile 'org.apache.commons:commons-csv:1.2'
  }
+
+task (run, dependsOn: 'classes', type: JavaExec) {
+   main = 'lab02.SimpleTest'
+   classpath = sourceSets.main.runtimeClasspath
+}
 
 

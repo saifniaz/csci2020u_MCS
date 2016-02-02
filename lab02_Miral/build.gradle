@@ -1,6 +1,16 @@
 apply plugin: 'java'
 
+repositories {
+    mavenCentral()
+ }
+
+ dependencies {
+   compile 'org.apache.commons:commons-csv:1.2'
+ }
+
 task (run, dependsOn: 'classes', type: JavaExec) {
    main = 'lab02.SimpleTest'
    classpath = sourceSets.main.runtimeClasspath
 }
+
+
