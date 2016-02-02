@@ -1,1 +1,6 @@
 apply plugin: 'java'
+
+task (run, dependsOn: 'classes', type: JavaExec) {
+   main = 'lab02.SimpleTest'
+   classpath = sourceSets.main.runtimeClasspath
+}
