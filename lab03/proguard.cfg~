@@ -1,0 +1,7 @@
+ -libraryjars <java.home>/lib/rt.jar
+ -printmapping CSVDemo.proguard.map
+ -keep public class lab03.CSVDemo {
+	public static void main(java.lang.String[]);
+ }
+ -dontwarn
+
