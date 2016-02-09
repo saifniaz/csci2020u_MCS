@@ -1,0 +1,39 @@
+apply plugin: 'java'
+
+buildscript {
+   repositories {
+      flatDir dirs: '/home/saif/proguard5.2.1/lib'
+   }
+   dependencies {
+      classpath ':proguard:'
+   }
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile 'org.apache.commons:commons-csv:1.2'
+}
+
+sourceCompatibility = 1.7
+version = '1.0'
+jar {
+   manifest {
+        attributes  'Main-Class': 'Test',
+                    'Implementation-Title': 'Sample-Gradle',
+                    'Implementation-Version': version
+   }
+}
+
+task (minify, dependsOn: 'jar', type: proguard.gradle.ProGuardTask) {
+   configuration 'proguard.cfg'
+    
+   injars 'build/libs/lab03_1_Saif-1.0.jar'
+   outjars 'build/libs/lab03_1_Saif-1.0.min.jar'
+ }
+task(run, dependsOn: 'classes', type: JavaExec) {
+	main = 'lab02.CSVDemo'
+	classpath = sourceSets.main.runtimeClasspath
+}
